@@ -1,9 +1,19 @@
+---
+import dashboard1 from "../assets/dashboard1.png";
+import dashboard2 from "../assets/dashboard2.png";
+import clientes from "../assets/clientes.png";
+import tarefas from "../assets/tarefas.png";
+import times from "../assets/times.png";
+import rentability from "../assets/rentability.png";
+import timerecording from "../assets/timerecording.png";
+---
 <!DOCTYPE html>
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FlowTask - O Futuro da Gestão Empresarial</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
@@ -14,19 +24,21 @@
         }
 
         :root {
-            --primary: #8b5cf6;
-            --primary-dark: #7c3aed;
+            --primary: #7c3aed;
+            --primary-dark: #6d28d9;
             --secondary: #06b6d4;
             --accent: #f59e0b;
             --success: #10b981;
             --warning: #f59e0b;
             --danger: #ef4444;
-            --dark: #0f0f23;
-            --dark-lighter: #1a1a2e;
-            --dark-card: #16213e;
-            --text-primary: #e2e8f0;
-            --text-secondary: #94a3b8;
-            --gradient-main: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            /* Light theme colors */
+            --dark: #ffffff; /* page background (kept var name to minimize changes) */
+            --dark-lighter: #f1f5f9; /* sections/footer background */
+            --dark-card: #ffffff; /* card background */
+            --text-primary: #0f172a; /* slate-900 */
+            --text-secondary: #475569; /* slate-600 */
+            --border-color: #e2e8f0; /* slate-200 */
+            --gradient-main: linear-gradient(135deg, #6366f1 0%, #7c3aed 100%);
             --gradient-purple: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
             --gradient-blue: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
         }
@@ -48,8 +60,8 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            background: radial-gradient(ellipse at top, rgba(139, 92, 246, 0.1) 0%, transparent 70%),
-                        radial-gradient(ellipse at bottom, rgba(6, 182, 212, 0.1) 0%, transparent 70%);
+            background: radial-gradient(ellipse at top, rgba(139, 92, 246, 0.05) 0%, transparent 70%),
+                        radial-gradient(ellipse at bottom, rgba(6, 182, 212, 0.05) 0%, transparent 70%);
         }
 
         .bg-animation::before {
@@ -76,14 +88,15 @@
             width: 100%;
             padding: 1rem 0;
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(139, 92, 246, 0.1);
+            border-bottom: 1px solid var(--border-color);
             z-index: 1000;
             transition: all 0.3s ease;
         }
 
         header.scrolled {
-            background: rgba(15, 15, 35, 0.95);
-            border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+            background: rgba(255, 255, 255, 0.96);
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: 0 6px 20px rgba(2, 6, 23, 0.06);
         }
 
         nav {
@@ -186,18 +199,12 @@
             font-size: clamp(2rem, 4vw, 3.2rem);
             font-weight: 800;
             margin-bottom: 1.2rem;
-            background: linear-gradient(135deg, #ffffff 0%, #8b5cf6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--text-primary);
             line-height: 1.1;
         }
 
         .hero-text .highlight {
-            background: var(--gradient-purple);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--primary);
         }
 
         .hero-text p {
@@ -269,10 +276,10 @@
             height: 100%;
             background: var(--dark-card);
             border-radius: 16px;
-            border: 0.8px solid rgba(139, 92, 246, 0.2);
+            border: 1px solid var(--border-color);
             overflow: hidden;
             position: relative;
-            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 12px 28px rgba(2, 6, 23, 0.08);
             transform: perspective(1000px) rotateY(-5deg) rotateX(5deg);
             transition: all 0.3s ease;
         }
@@ -284,7 +291,7 @@
         .dashboard-header {
             background: var(--dark-lighter);
             padding: 0.8rem;
-            border-bottom: 0.8px solid rgba(139, 92, 246, 0.1);
+            border-bottom: 1px solid var(--border-color);
             display: flex;
             align-items: center;
             gap: 0.8rem;
@@ -312,10 +319,10 @@
         }
 
         .card {
-            background: rgba(139, 92, 246, 0.1);
-            border-radius: 9.6px;
+            background: #ffffff;
+            border-radius: 12px;
             padding: 1.2rem;
-            border: 0.8px solid rgba(139, 92, 246, 0.2);
+            border: 1px solid var(--border-color);
             transition: all 0.3s ease;
         }
 
@@ -357,7 +364,7 @@
         }
 
         /* Features Section */
-        .features {
+    .features {
             padding: 6.4rem 1.6rem;
             max-width: 1120px;
             margin: 0 auto;
@@ -372,10 +379,7 @@
             font-size: clamp(1.6rem, 3.2vw, 2.4rem);
             font-weight: 700;
             margin-bottom: 0.8rem;
-            background: linear-gradient(135deg, #ffffff 0%, #8b5cf6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--text-primary);
         }
 
         .section-header p {
@@ -392,8 +396,8 @@
         }
 
         .feature-card {
-            background: rgba(16, 33, 62, 0.5);
-            border: 0.8px solid rgba(139, 92, 246, 0.1);
+            background: #ffffff;
+            border: 1px solid var(--border-color);
             border-radius: 16px;
             padding: 2rem;
             transition: all 0.3s ease;
@@ -414,9 +418,9 @@
         }
 
         .feature-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-6px);
             border-color: var(--primary);
-            box-shadow: 0 20px 40px rgba(139, 92, 246, 0.2);
+            box-shadow: 0 16px 40px rgba(2, 6, 23, 0.08);
         }
 
         .feature-card:hover::before {
@@ -470,11 +474,11 @@
 
         /* Stats Section */
         .stats {
-            background: rgba(139, 92, 246, 0.1);
+            background: var(--dark-lighter);
             padding: 4.8rem 1.6rem;
             margin: 3.2rem 0;
-            border-top: 0.8px solid rgba(139, 92, 246, 0.2);
-            border-bottom: 0.8px solid rgba(139, 92, 246, 0.2);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
         }
 
         .stats-container {
@@ -527,7 +531,7 @@
 
         .pricing-card {
             background: var(--dark-card);
-            border: 0.8px solid rgba(139, 92, 246, 0.1);
+            border: 1px solid var(--border-color);
             border-radius: 16px;
             padding: 2rem;
             text-align: center;
@@ -613,7 +617,7 @@
         footer {
             background: var(--dark-lighter);
             padding: 3.2rem 1.6rem 1.6rem;
-            border-top: 0.8px solid rgba(139, 92, 246, 0.2);
+            border-top: 1px solid var(--border-color);
         }
 
         .footer-content {
@@ -658,9 +662,90 @@
         .footer-bottom {
             text-align: center;
             padding-top: 1.6rem;
-            border-top: 0.8px solid rgba(139, 92, 246, 0.1);
+            border-top: 1px solid var(--border-color);
             color: var(--text-secondary);
         }
+
+        /* Screenshots slider */
+        .screenshots {
+            padding: 6.4rem 1.6rem;
+            max-width: 1120px;
+            margin: 0 auto;
+        }
+        .slider {
+            position: relative;
+        }
+        .slider-viewport {
+            overflow: hidden;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 16px 40px rgba(2, 6, 23, 0.06);
+            height: 560px; /* Fixed viewport height for consistent sizing */
+        }
+        .slider-track {
+            display: flex;
+            transition: transform 500ms cubic-bezier(.2,.7,.3,1);
+            will-change: transform;
+        }
+        .slide {
+            min-width: 100%;
+            height: 100%;
+            user-select: none;
+            position: relative;
+            background: #fff;
+        }
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Fill without distortion; crops if needed */
+            display: block;
+            background: #fff;
+    cursor: pointer !important;        
+    }
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 44px;
+            height: 44px;
+            border-radius: 999px;
+            border: 1px solid var(--border-color);
+            background: rgba(255,255,255,0.9);
+            color: var(--text-primary);
+            display: grid;
+            place-items: center;
+            font-size: 22px;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(2, 6, 23, 0.08);
+            z-index: 2;
+        }
+        .slider-btn:hover { background: #fff; }
+        .slider-btn.prev { left: 12px; }
+        .slider-btn.next { right: 12px; }
+        .slider-dots {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            margin-top: 14px;
+        }
+        .slider-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 999px;
+            background: #cbd5e1;
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            transition: all .2s ease;
+        }
+        .slider-dot.active { background: var(--primary); border-color: var(--primary); transform: scale(1.1); }
+        @media (max-width: 768px) {
+            .slider-viewport { height: 280px; }
+        }
+
+    /* GLightbox will handle modal styles; keep slide images clickable */
+    .slide img { cursor: zoom-in; }
+
+    /* (Removed expand button styles — every image is clickable) */
 
         /* Animations */
         @keyframes fadeInUp {
@@ -779,10 +864,7 @@
             font-weight: 800;
             margin-bottom: 1.2rem;
             margin-top: 5rem;
-            background: linear-gradient(135deg, #ffffff 0%, #8b5cf6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--text-primary);
             line-height: 1.1;
         }
 
@@ -851,6 +933,7 @@
             <div class="logo">FlowTask</div>
             <ul class="nav-links">
                 <li><a href="#features">Funcionalidades</a></li>
+                <li><a href="#screenshots">Galeria</a></li>
                 <li><a href="#pricing">Preços</a></li>
                 <li><a href="#lead-form">Contacto</a></li>
             </ul>
@@ -911,6 +994,30 @@
                 </div>
             </div>
         </div>
+    </section>
+
+    <section class="screenshots" id="screenshots">
+        <div class="section-header animate-on-scroll">
+            <h2>Veja a Plataforma em Ação</h2>
+            <p>Algumas capturas das principais áreas: Dashboard, Clientes, Tarefas e Registo de Tempos</p>
+        </div>
+        <div class="slider animate-on-scroll" aria-roledescription="carousel">
+            <button class="slider-btn prev" aria-label="Anterior">‹</button>
+            <div class="slider-viewport">
+                    <div class="slider-track">
+                        <div class="slide"><a href={dashboard1.src} class="glightbox" data-gallery="screens"><img src={dashboard1.src} width={dashboard1.width} height={dashboard1.height} alt="Dashboard FlowTask" loading="lazy"></a></div>
+                        <div class="slide"><a href={dashboard2.src} class="glightbox" data-gallery="screens"><img src={dashboard2.src} width={dashboard2.width} height={dashboard2.height} alt="Relatórios e Analytics" loading="lazy"></a></div>
+                        <div class="slide"><a href={clientes.src} class="glightbox" data-gallery="screens"><img src={clientes.src} width={clientes.width} height={clientes.height} alt="Gestão de Clientes" loading="lazy"></a></div>
+                        <div class="slide"><a href={tarefas.src} class="glightbox" data-gallery="screens"><img src={tarefas.src} width={tarefas.width} height={tarefas.height} alt="Workflows e Tarefas" loading="lazy"></a></div>
+                        <div class="slide"><a href={times.src} class="glightbox" data-gallery="screens"><img src={times.src} width={times.width} height={times.height} alt="Registo de Tempos" loading="lazy"></a></div>
+                        <div class="slide"><a href={rentability.src} class="glightbox" data-gallery="screens"><img src={rentability.src} width={rentability.width} height={rentability.height} alt="Relatório de Rentabilidade" loading="lazy"></a></div>
+                        <div class="slide"><a href={timerecording.src} class="glightbox" data-gallery="screens"><img src={timerecording.src} width={timerecording.width} height={timerecording.height} alt="Registo de Tempos - Detalhe" loading="lazy"></a></div>
+                    </div>
+            </div>
+            <button class="slider-btn next" aria-label="Seguinte">›</button>
+            <div class="slider-dots" role="tablist" aria-label="Slides"></div>
+        </div>
+        <!-- Using GLightbox for image popups -->
     </section>
 
     <section class="features" id="features">
@@ -1088,7 +1195,7 @@
                     <li>Até 25 utilizadores</li>
                     <li>Workflows + aprovações</li>
                     <li>Dashboards de rentabilidade</li>
-                    <li>1 000 mensagens de IA/mês (brevemente)/li>
+                    <li>1 000 mensagens de IA/mês (brevemente)</li>
                     <li>Relatórios agendados</li>
                     <li>Notificações manuais para colaboradores</li>
                 </ul>
@@ -1321,6 +1428,84 @@
                 }, 200);
             });
         }, 5000);
+
+        // Screenshots slider logic
+        (function initSlider(){
+            const slider = document.querySelector('.slider');
+            if (!slider) return;
+            const track = slider.querySelector('.slider-track');
+            const slides = Array.from(slider.querySelectorAll('.slide'));
+            const prevBtn = slider.querySelector('.prev');
+            const nextBtn = slider.querySelector('.next');
+            const dotsWrap = slider.querySelector('.slider-dots');
+            let index = 0;
+            let isDragging = false, startX = 0, currentX = 0, delta = 0, moved = false;
+            let autoTimer;
+
+            // Create dots
+            slides.forEach((_, i) => {
+                const dot = document.createElement('button');
+                dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
+                dot.setAttribute('role','tab');
+                dot.setAttribute('aria-label', `Ir para slide ${i+1}`);
+                dot.addEventListener('click', () => goTo(i));
+                dotsWrap.appendChild(dot);
+            });
+            const dots = Array.from(dotsWrap.children);
+
+            function update(){
+                track.style.transform = `translateX(${-index * 100}%)`;
+                dots.forEach((d,i)=> d.classList.toggle('active', i===index));
+            }
+            function goTo(i){ index = (i + slides.length) % slides.length; update(); restartAuto(); }
+            function next(){ goTo(index+1); }
+            function prev(){ goTo(index-1); }
+
+            // Buttons
+            nextBtn.addEventListener('click', next);
+            prevBtn.addEventListener('click', prev);
+
+            // Autoplay
+            function startAuto(){ autoTimer = setInterval(next, 5000); }
+            function stopAuto(){ clearInterval(autoTimer); }
+            function restartAuto(){ stopAuto(); startAuto(); }
+            startAuto();
+
+            // Allow external pause/resume via custom events
+            slider.addEventListener('slider:stop', stopAuto);
+            slider.addEventListener('slider:start', startAuto);
+
+            // Touch/drag
+            const viewport = slider.querySelector('.slider-viewport');
+            viewport.addEventListener('pointerdown', (e)=>{ isDragging=true; moved=false; startX=e.clientX; viewport.setPointerCapture(e.pointerId); stopAuto(); });
+            viewport.addEventListener('pointermove', (e)=>{
+                if(!isDragging) return; currentX=e.clientX; delta=currentX-startX; if(Math.abs(delta) > 5) moved = true; track.style.transition='none'; track.style.transform=`translateX(${-index*100 + (delta/viewport.clientWidth)*100}%)`;
+            });
+            viewport.addEventListener('pointerup', ()=>{
+                track.style.transition=''; if(Math.abs(delta)>viewport.clientWidth*0.2){ delta>0?prev():next(); } else { update(); restartAuto(); }
+                isDragging=false; delta=0; 
+            });
+
+            // Keyboard
+            slider.addEventListener('keydown', (e)=>{ if(e.key==='ArrowRight') next(); if(e.key==='ArrowLeft') prev(); });
+
+            // Initialize
+            update();
+        })();
+
+    </script>
+    <!-- GLightbox JS -->
+    <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+    <script>
+        // Initialize GLightbox on gallery anchors
+        const gl = GLightbox({
+            selector: '.glightbox',
+            touchNavigation: true,
+            loop: true,
+            openEffect: 'zoom',
+            closeEffect: 'zoom',
+            plyr: { css: false, js: false }
+        });
     </script>
     <style>
     .lead-form-section {
